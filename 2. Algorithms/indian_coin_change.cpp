@@ -1,0 +1,24 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+bool compare(int a, int b)
+{
+  return a <= b;
+}
+
+int main()
+{
+  int coin[] = {1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000};
+  int n = sizeof(coin) / sizeof(int);
+
+  int money = 169;
+  while (money > 0)
+  {
+    int lb = lower_bound(coin, coin + n, money, compare) - coin - 1;
+    int paper_notes = coin[lb];
+    money -= paper_notes;
+    cout << paper_notes << endl;
+  }
+  return 0;
+}
